@@ -1,0 +1,2 @@
+In this challenge there is no yaml configuration file for the test, so it fails.
+In order to solve it, the makefile is modified to use the sample yaml file that is automatically generated at setup stage.
