@@ -23,7 +23,7 @@ mtvec_handler:
   bne t0, t1, fail
   csrr t0, mepc
 
-  mret
+  j pass
 
 RVTEST_CODE_END
 
