@@ -22,5 +22,10 @@ To generate the coverage report, the following command has been used:
 cov --dir out_2023-07-31/spike_sim/  --simulator=pyflow  --enable_visualization -v 
  * No target is given because the tool was not functioning properly for rv32i. Therefore the report includes more instructions than required, but at least the ones related to rv32i can be checked.
 
-Coverage file is in cov_out_2023-07-31 folder
+
+Due to this limitation in the coverage tool, the coverage is generated for an ISA bigger than rv32i, therefore it will always be less than 100%.
+
+The rv32i_misc_cg has reached an 80% of coverage with the given tests.
+
+Other details of the coverage can be found in the CoverageReport.txt, in cov_out_2023-07-31 folder
 
