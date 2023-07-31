@@ -35,7 +35,7 @@
   description: >
     Arithmetic instruction test, no load/store/branch instructions
   gen_opts: >
-    +instr_cnt=10
+    +instr_cnt=1000
     +num_of_sub_program=0
     +directed_instr_0=riscv_int_numeric_corner_stream,4
     +no_fence=1
@@ -43,6 +43,9 @@
     +no_branch_jump=1
     +boot_mode=m
     +no_csr_instr=1
+    +illegal_instr_ratio=0
+    +enable_access_invalid_csr_level=0
+    +disable_compressed_instr=1
   iterations: 1
   gen_test: riscv_instr_base_test
   rtl_test: core_base_test
@@ -53,15 +56,14 @@
   iterations: 1
   gen_test: riscv_instr_base_test
   gen_opts: >
-    +instr_cnt=10
-    +num_of_sub_program=1
-    +directed_instr_0=riscv_load_store_rand_instr_stream,4
-    +directed_instr_1=riscv_loop_instr,4
-    +directed_instr_2=riscv_hazard_instr_stream,4
-    +directed_instr_3=riscv_load_store_hazard_instr_stream,4
-    +directed_instr_4=riscv_multi_page_load_store_instr_stream,4
-    +directed_instr_5=riscv_mem_region_stress_test,4
-    +directed_instr_6=riscv_jal_instr,4
+    +instr_cnt=100
+    +num_of_sub_program=0
+    +boot_mode=m
+    +enable_illegal_csr_instruction=0
+    +enable_access_invalid_csr_level=0
+    +illegal_instr_ratio=0
+    +enable_access_invalid_csr_level=0
+    +disable_compressed_instr=1
   rtl_test: core_base_test
 
 - test: riscv_jump_stress_test
@@ -70,20 +72,15 @@
   iterations: 1
   gen_test: riscv_instr_base_test
   gen_opts: >
-    +instr_cnt=10
-    +num_of_sub_program=1
-    +directed_instr_1=riscv_jal_instr,20
-  rtl_test: core_base_test
-
-- test: riscv_loop_test
-  description: >
-    Random instruction stress test
-  iterations: 1
-  gen_test: riscv_instr_base_test
-  gen_opts: >
-    +instr_cnt=10
-    +num_of_sub_program=1
-    +directed_instr_1=riscv_loop_instr,20
+    +instr_cnt=1000
+    +num_of_sub_program=0
+    +boot_mode=m
+    +no_data_page=1
+    +directed_instr_1=riscv_jal_instr,5
+    +enable_illegal_csr_instruction=0
+    +illegal_instr_ratio=0
+    +enable_access_invalid_csr_level=0
+    +disable_compressed_instr=1
   rtl_test: core_base_test
 
 - test: riscv_rand_jump_test
@@ -93,6 +90,10 @@
   gen_test: riscv_instr_base_test
   gen_opts: >
     +instr_cnt=10
-    +num_of_sub_program=1
-    +directed_instr_0=riscv_load_store_rand_instr_stream,8
+    +num_of_sub_program=0
+    +directed_instr_0=riscv_jal_instr,5
+    +enable_illegal_csr_instruction=0
+    +enable_access_invalid_csr_level=0
+    +illegal_instr_ratio=0
+    +disable_compressed_instr=1
   rtl_test: core_base_test
